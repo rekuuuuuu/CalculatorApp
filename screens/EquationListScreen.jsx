@@ -1,17 +1,17 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
-import { AppBar } from "./components/AppBar";
-import { EquationList } from "./components/EquationList";
+import { AppBar } from "../components/AppBar";
+import { EquationList } from "../components/EquationList";
 
-export default function App() {
+export const EquationListScreen = () => {
   return (
     <View style={styles.container}>
       <AppBar></AppBar>
       <EquationList></EquationList>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
