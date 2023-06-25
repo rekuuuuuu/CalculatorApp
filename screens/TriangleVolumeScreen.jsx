@@ -2,13 +2,13 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 
 import { AppBar } from "../components/AppBar";
-import { TriangleArea } from "../components/TriangleArea";
+import { TriangleVolume } from "../components/TriangleVolume";
 
-export const TriangleAreaScreen = () => {
+export const TriangleVolumeScreen = () => {
   return (
     <View style={styles.container}>
       <AppBar></AppBar>
-      <TriangleArea></TriangleArea>
+      <TriangleVolume></TriangleVolume>
     </View>
   );
 };

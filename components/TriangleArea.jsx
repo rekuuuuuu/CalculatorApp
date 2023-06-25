@@ -55,7 +55,6 @@ export const TriangleArea = () => {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    // justifyContent: "center",
     alignItems: "center",
     padding: 16
   },

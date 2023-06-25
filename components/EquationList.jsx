@@ -14,14 +14,14 @@ export const EquationList = () => {
       <View style={styles.equationList}>
         <View style={styles.equationListTitle}>
           <Text style={styles.equationListIcon}>★</Text>
-          <Text style={styles.equationListName}>三角形の体積</Text>
+          <Text style={styles.equationListName}>長方形の面積</Text>
         </View>
       </View>
 
       <View style={styles.equationList}>
         <View style={styles.equationListTitle}>
           <Text style={styles.equationListIcon}>★</Text>
-          <Text style={styles.equationListName}>長方形の面積</Text>
+          <Text style={styles.equationListName}>○○柱の体積</Text>
         </View>
       </View>
     </View>
