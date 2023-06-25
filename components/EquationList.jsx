@@ -14,7 +14,7 @@ export const EquationList = () => {
       <View style={styles.equationList}>
         <View style={styles.equationListTitle}>
           <Text style={styles.equationListIcon}>★</Text>
-          <Text style={styles.equationListName}>長方形の面積</Text>
+          <Text style={styles.equationListName}>正方形・長方形の面積</Text>
         </View>
       </View>
 
