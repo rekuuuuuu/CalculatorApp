@@ -1,32 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity, TouchableWithoutFeedback } from "react-native";
-import { calculateTriangleVolume, resetTriangleVolume, dismissKeyboard } from "../components/Functions";
+import { calculateCircleArea, resetCircleArea, dismissKeyboard } from "../components/Functions";
 
-export const TriangleVolume = () => {
-  const [area, setArea] = React.useState("");
-  const [height, setHeight] = React.useState("");
-  const [volume, setVolume] = React.useState(0);
+export const CircleArea = () => {
+  const [radius, setRadius] = useState("");
+  const [area, setArea] = useState(0);
 
   const handlePress = () => {
-    const triangleVolume = calculateTriangleVolume(area, height);
-    setVolume(triangleVolume);
+    const circleArea = calculateCircleArea(radius);
+    setArea(circleArea);
     dismissKeyboard();
   };
 
   return (
     <TouchableWithoutFeedback onPress={dismissKeyboard}>
       <View style={styles.body}>
-        <Image source={require("../assets/○○柱の体積公式.png")} style={styles.image} resizeMode="stretch" />
-        <Text style={styles.title}>○○柱の体積</Text>
-        <TextInput style={styles.input} placeholder="底面積を入力" value={area} onChangeText={setArea} keyboardType="numeric" />
-        <TextInput style={styles.input} placeholder="高さを入力" value={height} onChangeText={setHeight} keyboardType="numeric" />
+        <Image source={require("../assets/円の面積公式.png")} style={styles.image} />
+        <Text style={styles.title}>円の面積</Text>
+        <TextInput style={styles.input} placeholder="半径を入力" value={radius} onChangeText={setRadius} keyboardType="numeric" />
         <TouchableOpacity style={styles.calculationButton} onPress={handlePress}>
           <Text style={styles.buttonText}>計算</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.resetButton} onPress={() => resetTriangleVolume(setArea, setHeight, setVolume)}>
+        <TouchableOpacity style={styles.resetButton} onPress={() => resetCircleArea(setRadius, setArea)}>
           <Text style={styles.buttonText}>リセット</Text>
         </TouchableOpacity>
-        <Text style={styles.result}>体積: {volume}</Text>
+        <Text style={styles.result}>面積: {area}</Text>
       </View>
     </TouchableWithoutFeedback>
   );
