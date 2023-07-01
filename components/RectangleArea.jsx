@@ -1,35 +1,15 @@
 import React from "react";
 import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { calculateRectangleArea, resetRectangleArea, dismissKeyboard } from "../components/Functions";
 
 export const RectangleArea = () => {
   const [height, setHeight] = React.useState("");
   const [width, setWidth] = React.useState("");
   const [area, setArea] = React.useState(0);
 
-  const calculateArea = () => {
-    const heightValue = parseFloat(height);
-    const widthValue = parseFloat(width);
-
-    if (isNaN(heightValue) || isNaN(widthValue)) {
-      setArea(0);
-    } else {
-      const rectangleArea = heightValue * widthValue;
-      setArea(rectangleArea);
-    }
-  };
-
-  const resetValues = () => {
-    setHeight("");
-    setWidth("");
-    setArea(0);
-  };
-
-  const dismissKeyboard = () => {
-    Keyboard.dismiss();
-  };
-
   const handlePress = () => {
-    calculateArea();
+    const rectangleArea = calculateRectangleArea(height, width);
+    setArea(rectangleArea);
     dismissKeyboard();
   };
 
@@ -43,7 +23,7 @@ export const RectangleArea = () => {
         <TouchableOpacity style={styles.calculationButton} onPress={handlePress}>
           <Text style={styles.buttonText}>計算</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.resetButton} onPress={resetValues}>
+        <TouchableOpacity style={styles.resetButton} onPress={() => resetRectangleArea(setHeight, setWidth, setArea)}>
           <Text style={styles.buttonText}>リセット</Text>
         </TouchableOpacity>
         <Text style={styles.result}>面積: {area}</Text>

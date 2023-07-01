@@ -1,35 +1,15 @@
 import React from "react";
 import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { calculateTriangleVolume, resetTriangleVolume, dismissKeyboard } from "../components/Functions";
 
 export const TriangleVolume = () => {
   const [area, setArea] = React.useState("");
   const [height, setHeight] = React.useState("");
   const [volume, setVolume] = React.useState(0);
 
-  const calculateArea = () => {
-    const areaValue = parseFloat(area);
-    const heightValue = parseFloat(height);
-
-    if (isNaN(areaValue) || isNaN(heightValue)) {
-      setVolume(0);
-    } else {
-      const triangleVolume = areaValue * heightValue;
-      setVolume(triangleVolume);
-    }
-  };
-
-  const resetValues = () => {
-    setArea("");
-    setHeight("");
-    setVolume(0);
-  };
-
-  const dismissKeyboard = () => {
-    Keyboard.dismiss();
-  };
-
   const handlePress = () => {
-    calculateArea();
+    const triangleVolume = calculateTriangleVolume(area, height);
+    setVolume(triangleVolume);
     dismissKeyboard();
   };
 
@@ -43,7 +23,7 @@ export const TriangleVolume = () => {
         <TouchableOpacity style={styles.calculationButton} onPress={handlePress}>
           <Text style={styles.buttonText}>計算</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.resetButton} onPress={resetValues}>
+        <TouchableOpacity style={styles.resetButton} onPress={() => resetTriangleVolume(setArea, setHeight, setVolume)}>
           <Text style={styles.buttonText}>リセット</Text>
         </TouchableOpacity>
         <Text style={styles.result}>体積: {volume}</Text>

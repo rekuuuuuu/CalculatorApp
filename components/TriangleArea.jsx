@@ -1,35 +1,15 @@
 import React from "react";
 import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { calculateTriangleArea, resetTriangleArea, dismissKeyboard } from "../components/Functions";
 
 export const TriangleArea = () => {
   const [base, setBase] = React.useState("");
   const [height, setHeight] = React.useState("");
   const [area, setArea] = React.useState(0);
 
-  const calculateArea = () => {
-    const baseValue = parseFloat(base);
-    const heightValue = parseFloat(height);
-
-    if (isNaN(baseValue) || isNaN(heightValue)) {
-      setArea(0);
-    } else {
-      const triangleArea = (baseValue * heightValue) / 2;
-      setArea(triangleArea);
-    }
-  };
-
-  const resetValues = () => {
-    setBase("");
-    setHeight("");
-    setArea(0);
-  };
-
-  const dismissKeyboard = () => {
-    Keyboard.dismiss();
-  };
-
   const handlePress = () => {
-    calculateArea();
+    const triangleArea = calculateTriangleArea(base, height);
+    setArea(triangleArea);
     dismissKeyboard();
   };
 
@@ -43,7 +23,7 @@ export const TriangleArea = () => {
         <TouchableOpacity style={styles.calculationButton} onPress={handlePress}>
           <Text style={styles.buttonText}>計算</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.resetButton} onPress={resetValues}>
+        <TouchableOpacity style={styles.resetButton} onPress={() => resetTriangleArea(setBase, setHeight, setArea)}>
           <Text style={styles.buttonText}>リセット</Text>
         </TouchableOpacity>
         <Text style={styles.result}>面積: {area}</Text>

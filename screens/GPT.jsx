@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, TextInput, Button, StyleSheet, Image, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { calculateTriangleArea, resetValues } from "../components/Functions";
 
 export const GPT = () => {
   const [base, setBase] = React.useState("");
@@ -7,21 +8,8 @@ export const GPT = () => {
   const [area, setArea] = React.useState(0);
 
   const calculateArea = () => {
-    const baseValue = parseFloat(base);
-    const heightValue = parseFloat(height);
-
-    if (isNaN(baseValue) || isNaN(heightValue)) {
-      setArea(0);
-    } else {
-      const triangleArea = (baseValue * heightValue) / 2;
-      setArea(triangleArea);
-    }
-  };
-
-  const resetValues = () => {
-    setBase("");
-    setHeight("");
-    setArea(0);
+    const triangleArea = calculateTriangleArea(base, height);
+    setArea(triangleArea);
   };
 
   const dismissKeyboard = () => {
@@ -37,7 +25,7 @@ export const GPT = () => {
         <TextInput style={styles.input} placeholder="Enter height" value={height} onChangeText={setHeight} keyboardType="numeric" />
         <Button title="Calculate" onPress={calculateArea} />
         <Text style={styles.result}>Area: {area}</Text>
-        <Button title="Reset" onPress={resetValues} />
+        <Button title="Reset" onPress={() => resetValues(setBase, setHeight, setArea)} />
       </View>
     </TouchableWithoutFeedback>
   );
