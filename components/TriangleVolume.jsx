@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity, TouchableWithoutFeedback } from "react-native";
-import { calculateTriangleVolume, resetTriangleVolume, dismissKeyboard } from "../components/Functions";
+import { calculateTriangleVolume, resetTriangleVolume, dismissKeyboard, showAlertPopup } from "../components/Functions";
 
 export const TriangleVolume = () => {
   const [area, setArea] = React.useState("");
@@ -8,9 +8,13 @@ export const TriangleVolume = () => {
   const [volume, setVolume] = React.useState(0);
 
   const handlePress = () => {
-    const triangleVolume = calculateTriangleVolume(area, height);
-    setVolume(triangleVolume);
-    dismissKeyboard();
+    if ((area, height === "")) {
+      showAlertPopup(); // ポップアップを表示
+    } else {
+      const triangleVolume = calculateTriangleVolume(area, height);
+      setVolume(triangleVolume);
+      dismissKeyboard();
+    }
   };
 
   return (

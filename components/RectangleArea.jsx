@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity, TouchableWithoutFeedback } from "react-native";
-import { calculateRectangleArea, resetRectangleArea, dismissKeyboard } from "../components/Functions";
+import { calculateRectangleArea, resetRectangleArea, dismissKeyboard, showAlertPopup } from "../components/Functions";
 
 export const RectangleArea = () => {
   const [height, setHeight] = React.useState("");
@@ -8,9 +8,13 @@ export const RectangleArea = () => {
   const [area, setArea] = React.useState(0);
 
   const handlePress = () => {
-    const rectangleArea = calculateRectangleArea(height, width);
-    setArea(rectangleArea);
-    dismissKeyboard();
+    if ((height, width === "")) {
+      showAlertPopup(); // ポップアップを表示
+    } else {
+      const rectangleArea = calculateRectangleArea(height, width);
+      setArea(rectangleArea);
+      dismissKeyboard();
+    }
   };
 
   return (

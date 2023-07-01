@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity, TouchableWithoutFeedback } from "react-native";
-import { calculateTriangleArea, resetTriangleArea, dismissKeyboard } from "../components/Functions";
+import { calculateTriangleArea, resetTriangleArea, dismissKeyboard, showAlertPopup } from "../components/Functions";
 
 export const TriangleArea = () => {
   const [base, setBase] = React.useState("");
@@ -8,9 +8,13 @@ export const TriangleArea = () => {
   const [area, setArea] = React.useState(0);
 
   const handlePress = () => {
-    const triangleArea = calculateTriangleArea(base, height);
-    setArea(triangleArea);
-    dismissKeyboard();
+    if ((base, height === "")) {
+      showAlertPopup(); // ポップアップを表示
+    } else {
+      const triangleArea = calculateTriangleArea(base, height);
+      setArea(triangleArea);
+      dismissKeyboard();
+    }
   };
 
   return (

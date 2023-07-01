@@ -1,4 +1,4 @@
-import { Keyboard } from "react-native";
+import { Keyboard, Alert } from "react-native";
 
 // 三角形の面積
 export function calculateTriangleArea(base, height) {
@@ -75,3 +75,8 @@ export const resetTriangleVolume = (setArea, setHeight, setVolume) => {
 export function dismissKeyboard() {
   Keyboard.dismiss();
 }
+
+// ポップアップを表示する
+export const showAlertPopup = () => {
+  Alert.alert("Warning", "値を入力してください。", [{ text: "OK" }]);
+};

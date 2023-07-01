@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity, TouchableWithoutFeedback } from "react-native";
-import { calculateCircleArea, resetCircleArea, dismissKeyboard } from "../components/Functions";
+import { calculateCircleArea, resetCircleArea, dismissKeyboard, showAlertPopup } from "../components/Functions";
 
 export const CircleArea = () => {
   const [radius, setRadius] = useState("");
   const [area, setArea] = useState(0);
 
   const handlePress = () => {
-    const circleArea = calculateCircleArea(radius);
-    setArea(circleArea);
-    dismissKeyboard();
+    if (radius === "") {
+      showAlertPopup(); // ポップアップを表示
+    } else {
+      const circleArea = calculateCircleArea(radius);
+      setArea(circleArea);
+      dismissKeyboard();
+    }
   };
 
   return (

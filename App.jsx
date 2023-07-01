@@ -9,5 +9,5 @@ import { TriangleVolumeScreen } from "./screens/TriangleVolumeScreen";
 import { GPT } from "./screens/GPT";
 
 export default function App() {
-  return <CircleAreaScreen></CircleAreaScreen>;
+  return <EquationListScreen></EquationListScreen>;
 }
