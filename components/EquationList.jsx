@@ -1,33 +1,34 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { MaterialCommunityIcons } from "react-native-vector-icons";
 
 export const EquationList = () => {
   return (
     <View>
       <View style={styles.equationList}>
         <View style={styles.equationListTitle}>
-          <Text style={styles.equationListIcon}>★</Text>
+          <MaterialCommunityIcons name="book-open-page-variant-outline" style={styles.equationListIcon} />
           <Text style={styles.equationListName}>三角形の面積</Text>
         </View>
       </View>
 
       <View style={styles.equationList}>
         <View style={styles.equationListTitle}>
-          <Text style={styles.equationListIcon}>★</Text>
+          <MaterialCommunityIcons name="book-open-page-variant-outline" style={styles.equationListIcon} />
           <Text style={styles.equationListName}>正方形・長方形の面積</Text>
         </View>
       </View>
 
       <View style={styles.equationList}>
         <View style={styles.equationListTitle}>
-          <Text style={styles.equationListIcon}>★</Text>
+          <MaterialCommunityIcons name="book-open-page-variant-outline" style={styles.equationListIcon} />
           <Text style={styles.equationListName}>円の面積</Text>
         </View>
       </View>
 
       <View style={styles.equationList}>
         <View style={styles.equationListTitle}>
-          <Text style={styles.equationListIcon}>★</Text>
+          <MaterialCommunityIcons name="book-open-page-variant-outline" style={styles.equationListIcon} />
           <Text style={styles.equationListName}>○○柱の体積</Text>
         </View>
       </View>
