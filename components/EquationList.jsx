@@ -61,7 +61,15 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 20,
     borderBottomWidth: 1,
-    borderColor: "rgba(0, 0, 0, 0.15)"
+    borderColor: "rgba(0, 0, 0, 0.15)",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5
   },
   equationListTitle: {
     flexDirection: "row",
