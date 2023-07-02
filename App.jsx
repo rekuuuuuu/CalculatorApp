@@ -6,6 +6,7 @@ import { EquationListScreen } from "./screens/EquationListScreen";
 import { TriangleAreaScreen } from "./screens/TriangleAreaScreen";
 import { RectangleAreaScreen } from "./screens/RectangleAreaScreen";
 import { CircleAreaScreen } from "./screens/CircleAreaScreen";
+import { TrapezoidAreaScreen } from "./screens/TrapezoidAreaScreen";
 import { TriangleVolumeScreen } from "./screens/TriangleVolumeScreen";
 import { PyramidVolumeScreen } from "./screens/PyramidVolumeScreen";
 
@@ -47,6 +48,7 @@ export default function App() {
         <Stack.Screen name="TriangleArea" component={TriangleAreaScreen} />
         <Stack.Screen name="RectangleArea" component={RectangleAreaScreen} />
         <Stack.Screen name="CircleArea" component={CircleAreaScreen} />
+        <Stack.Screen name="TrapezoidArea" component={TrapezoidAreaScreen} />
         <Stack.Screen name="TriangleVolume" component={TriangleVolumeScreen} />
         <Stack.Screen name="PyramidVolume" component={PyramidVolumeScreen} />
       </Stack.Navigator>

@@ -53,6 +53,27 @@ export const resetCircleArea = (setRadius, setArea) => {
   setArea(0);
 };
 
+// 台形の面積
+export const calculateTrapezoidArea = (base1, base2, height) => {
+  const base1Value = parseFloat(base1);
+  const base2Value = parseFloat(base2);
+  const heightValue = parseFloat(height);
+
+  if (isNaN(base1Value) || isNaN(base2Value) || isNaN(heightValue)) {
+    return 0;
+  } else {
+    return ((base1Value + base2Value) * heightValue) / 2;
+  }
+};
+
+// 台形の面積リセット
+export const resetTrapezoidArea = (setBase1, setBase2, setHeight, setArea) => {
+  setBase1("");
+  setBase2("");
+  setHeight("");
+  setArea(0);
+};
+
 // ○○柱の体積
 export const calculateTriangleVolume = (area, height) => {
   const areaValue = parseFloat(area);

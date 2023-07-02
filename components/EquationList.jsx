@@ -18,6 +18,10 @@ export const EquationList = () => {
     navigation.navigate("CircleArea");
   };
 
+  const GoToTrapezoidArea = () => {
+    navigation.navigate("TrapezoidArea");
+  };
+
   const GoToTriangleVolume = () => {
     navigation.navigate("TriangleVolume");
   };
@@ -46,6 +50,13 @@ export const EquationList = () => {
         <View style={styles.equationListTitle}>
           <MaterialCommunityIcons name="calculator-variant-outline" style={styles.equationListIcon} />
           <Text style={styles.equationListName}>円の面積</Text>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.equationList} onPress={GoToTrapezoidArea}>
+        <View style={styles.equationListTitle}>
+          <MaterialCommunityIcons name="calculator-variant-outline" style={styles.equationListIcon} />
+          <Text style={styles.equationListName}>台形の面積</Text>
         </View>
       </TouchableOpacity>
 
