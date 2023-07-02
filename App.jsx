@@ -7,6 +7,7 @@ import { TriangleAreaScreen } from "./screens/TriangleAreaScreen";
 import { RectangleAreaScreen } from "./screens/RectangleAreaScreen";
 import { CircleAreaScreen } from "./screens/CircleAreaScreen";
 import { TriangleVolumeScreen } from "./screens/TriangleVolumeScreen";
+import { PyramidVolumeScreen } from "./screens/PyramidVolumeScreen";
 
 const Stack = createStackNavigator();
 
@@ -47,6 +48,7 @@ export default function App() {
         <Stack.Screen name="RectangleArea" component={RectangleAreaScreen} />
         <Stack.Screen name="CircleArea" component={CircleAreaScreen} />
         <Stack.Screen name="TriangleVolume" component={TriangleVolumeScreen} />
+        <Stack.Screen name="PyramidVolume" component={PyramidVolumeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

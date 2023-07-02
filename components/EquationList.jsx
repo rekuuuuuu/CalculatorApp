@@ -22,33 +22,44 @@ export const EquationList = () => {
     navigation.navigate("TriangleVolume");
   };
 
+  const GoToPyramidVolume = () => {
+    navigation.navigate("PyramidVolume");
+  };
+
   return (
     <View>
       <TouchableOpacity style={styles.equationList} onPress={GoToTriangleArea}>
         <View style={styles.equationListTitle}>
-          <MaterialCommunityIcons name="book-open-page-variant-outline" style={styles.equationListIcon} />
+          <MaterialCommunityIcons name="calculator-variant-outline" style={styles.equationListIcon} />
           <Text style={styles.equationListName}>三角形の面積</Text>
         </View>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.equationList} onPress={GoToRectangleArea}>
         <View style={styles.equationListTitle}>
-          <MaterialCommunityIcons name="book-open-page-variant-outline" style={styles.equationListIcon} />
+          <MaterialCommunityIcons name="calculator-variant-outline" style={styles.equationListIcon} />
           <Text style={styles.equationListName}>正方形・長方形の面積</Text>
         </View>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.equationList} onPress={GoToCircleArea}>
         <View style={styles.equationListTitle}>
-          <MaterialCommunityIcons name="book-open-page-variant-outline" style={styles.equationListIcon} />
+          <MaterialCommunityIcons name="calculator-variant-outline" style={styles.equationListIcon} />
           <Text style={styles.equationListName}>円の面積</Text>
         </View>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.equationList} onPress={GoToTriangleVolume}>
         <View style={styles.equationListTitle}>
-          <MaterialCommunityIcons name="book-open-page-variant-outline" style={styles.equationListIcon} />
+          <MaterialCommunityIcons name="calculator-variant-outline" style={styles.equationListIcon} />
           <Text style={styles.equationListName}>○○柱の体積</Text>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.equationList} onPress={GoToPyramidVolume}>
+        <View style={styles.equationListTitle}>
+          <MaterialCommunityIcons name="calculator-variant-outline" style={styles.equationListIcon} />
+          <Text style={styles.equationListName}>角錐・円錐の体積</Text>
         </View>
       </TouchableOpacity>
     </View>

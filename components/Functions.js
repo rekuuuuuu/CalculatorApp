@@ -71,6 +71,24 @@ export const resetTriangleVolume = (setArea, setHeight, setVolume) => {
   setVolume(0);
 };
 
+// 角錐・円錐の体積
+export const calculatePyramidVolume = (area, height) => {
+  const areaValue = parseFloat(area);
+  const heightValue = parseFloat(height);
+
+  if (isNaN(areaValue) || isNaN(heightValue)) {
+    return 0;
+  } else {
+    return (areaValue * heightValue * 1) / 3;
+  }
+};
+// 角錐・円錐の体積リセット
+export const resetPyramidVolume = (setArea, setHeight, setVolume) => {
+  setArea("");
+  setHeight("");
+  setVolume(0);
+};
+
 // inputプロパティ外をタッチしたら、キーボードを消す
 export function dismissKeyboard() {
   Keyboard.dismiss();
