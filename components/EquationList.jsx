@@ -1,37 +1,56 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "react-native-vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 export const EquationList = () => {
+  const navigation = useNavigation();
+
+  const GoToTriangleArea = () => {
+    navigation.navigate("TriangleArea");
+  };
+
+  const GoToRectangleArea = () => {
+    navigation.navigate("RectangleArea");
+  };
+
+  const GoToCircleArea = () => {
+    navigation.navigate("CircleArea");
+  };
+
+  const GoToTriangleVolume = () => {
+    navigation.navigate("TriangleVolume");
+  };
+
   return (
     <View>
-      <View style={styles.equationList}>
+      <TouchableOpacity style={styles.equationList} onPress={GoToTriangleArea}>
         <View style={styles.equationListTitle}>
           <MaterialCommunityIcons name="book-open-page-variant-outline" style={styles.equationListIcon} />
           <Text style={styles.equationListName}>三角形の面積</Text>
         </View>
-      </View>
+      </TouchableOpacity>
 
-      <View style={styles.equationList}>
+      <TouchableOpacity style={styles.equationList} onPress={GoToRectangleArea}>
         <View style={styles.equationListTitle}>
           <MaterialCommunityIcons name="book-open-page-variant-outline" style={styles.equationListIcon} />
           <Text style={styles.equationListName}>正方形・長方形の面積</Text>
         </View>
-      </View>
+      </TouchableOpacity>
 
-      <View style={styles.equationList}>
+      <TouchableOpacity style={styles.equationList} onPress={GoToCircleArea}>
         <View style={styles.equationListTitle}>
           <MaterialCommunityIcons name="book-open-page-variant-outline" style={styles.equationListIcon} />
           <Text style={styles.equationListName}>円の面積</Text>
         </View>
-      </View>
+      </TouchableOpacity>
 
-      <View style={styles.equationList}>
+      <TouchableOpacity style={styles.equationList} onPress={GoToTriangleVolume}>
         <View style={styles.equationListTitle}>
           <MaterialCommunityIcons name="book-open-page-variant-outline" style={styles.equationListIcon} />
           <Text style={styles.equationListName}>○○柱の体積</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -49,10 +68,10 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   equationListIcon: {
-    fontSize: 18,
+    fontSize: 25,
     lineHeight: 32,
     fontWeight: "bold",
-    marginRight: 10
+    marginRight: 15
   },
   equationListName: {
     fontSize: 18,

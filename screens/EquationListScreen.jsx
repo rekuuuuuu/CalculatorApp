@@ -1,13 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 
-import { AppBar } from "../components/AppBar";
 import { EquationList } from "../components/EquationList";
 
 export const EquationListScreen = () => {
   return (
     <View style={styles.container}>
-      <AppBar></AppBar>
       <EquationList></EquationList>
     </View>
   );
