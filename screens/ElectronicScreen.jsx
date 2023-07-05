@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from "react-native";
 
 export const ElectronicScreen = () => {
   const [expression, setExpression] = useState("");
   const [result, setResult] = useState("");
 
-  const handlePress = () => {
+  const handlePress = (value) => {
+    setExpression((prevExpression) => prevExpression + value);
+  };
+
+  const handleCalculate = () => {
     try {
       const evalResult = eval(expression);
       setResult(evalResult.toString());
@@ -14,84 +18,173 @@ export const ElectronicScreen = () => {
     }
   };
 
+  const handleDelete = () => {
+    setExpression((prevExpression) => prevExpression.slice(0, -1));
+  };
+
   const handleClear = () => {
     setExpression("");
     setResult("");
   };
 
-  const handleInput = (text) => {
-    setExpression(text);
-  };
-
   return (
     <View style={styles.container}>
       <View style={styles.resultContainer}>
+        <Text style={styles.expressionText}>{expression}</Text>
         <Text style={styles.resultText}>{result}</Text>
       </View>
-      <View style={styles.inputContainer}>
-        <TextInput style={styles.input} value={expression} onChangeText={handleInput} placeholder="式を入力してください" keyboardType="numeric" />
-      </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={handleClear}>
-          <Text style={styles.buttonText}>クリア</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={handlePress}>
-          <Text style={styles.buttonText}>計算</Text>
-        </TouchableOpacity>
+        <View style={styles.row}>
+          <TouchableOpacity style={styles.button} onPress={() => handlePress("7")}>
+            <Text style={styles.buttonText}>7</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => handlePress("8")}>
+            <Text style={styles.buttonText}>8</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => handlePress("9")}>
+            <Text style={styles.buttonText}>9</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => handlePress("+")}>
+            <Text style={styles.buttonText}>+</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.row}>
+          <TouchableOpacity style={styles.button} onPress={() => handlePress("4")}>
+            <Text style={styles.buttonText}>4</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => handlePress("5")}>
+            <Text style={styles.buttonText}>5</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => handlePress("6")}>
+            <Text style={styles.buttonText}>6</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => handlePress("-")}>
+            <Text style={styles.buttonText}>-</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.row}>
+          <TouchableOpacity style={styles.button} onPress={() => handlePress("1")}>
+            <Text style={styles.buttonText}>1</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => handlePress("2")}>
+            <Text style={styles.buttonText}>2</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => handlePress("3")}>
+            <Text style={styles.buttonText}>3</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => handlePress("*")}>
+            <Text style={styles.buttonText}>×</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.row}>
+          <TouchableOpacity style={styles.button} onPress={() => handlePress("0")}>
+            <Text style={styles.buttonText}>0</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => handlePress(".")}>
+            <Text style={styles.buttonText}>.</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => handlePress("%")}>
+            <Text style={styles.buttonText}>%</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => handlePress("÷")}>
+            <Text style={styles.buttonText}>÷</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.row}>
+          <TouchableOpacity style={styles.bottomButton} onPress={handleClear}>
+            <Text style={styles.bottomButtonText}>AC</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.bottomButton} onPress={handleDelete}>
+            <Text style={styles.bottomButtonText}>DEL</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.calculateButton} onPress={handleCalculate}>
+            <Text style={styles.calculateButtonText}>=</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
 };
 
+const { width } = Dimensions.get("window");
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    backgroundColor: "#f5f5f5"
   },
   resultContainer: {
-    width: "80%",
-    height: 80,
-    justifyContent: "center",
+    width: width * 0.8,
+    height: 200,
+    justifyContent: "flex-end",
     alignItems: "flex-end",
     marginBottom: 20,
-    borderColor: "black",
+    borderColor: "#ccc",
     borderWidth: 1,
-    borderRadius: 5,
-    padding: 10
+    borderRadius: 10,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    backgroundColor: "#fff"
+  },
+  expressionText: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 10
   },
   resultText: {
-    fontSize: 24,
+    fontSize: 40,
     fontWeight: "bold"
-  },
-  inputContainer: {
-    width: "80%",
-    height: 40,
-    marginBottom: 20,
-    borderColor: "black",
-    borderWidth: 1,
-    borderRadius: 5,
-    padding: 5
-  },
-  input: {
-    flex: 1,
-    fontSize: 16
   },
   buttonContainer: {
-    flexDirection: "row"
+    width: width * 0.8,
+    marginBottom: 20
+  },
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 10
   },
   button: {
-    width: 100,
-    height: 40,
-    backgroundColor: "#467FD3",
-    justifyContent: "center",
+    flex: 1,
     alignItems: "center",
-    borderRadius: 5,
-    marginHorizontal: 10
+    justifyContent: "center",
+    borderRadius: 50,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    marginHorizontal: 5,
+    height: 60
   },
   buttonText: {
-    color: "white",
-    fontSize: 16,
+    fontSize: 30,
     fontWeight: "bold"
+  },
+  bottomButton: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 50,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    height: 60
+  },
+  bottomButtonText: {
+    fontSize: 20,
+    fontWeight: "bold"
+  },
+  calculateButton: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 50,
+    backgroundColor: "#467FD3",
+    marginHorizontal: 5,
+    height: 60
+  },
+  calculateButtonText: {
+    fontSize: 30,
+    fontWeight: "bold",
+    color: "#fff"
   }
 });
